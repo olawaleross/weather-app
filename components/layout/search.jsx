@@ -9,7 +9,7 @@ const search = () => {
         <input
           type="text"
           placeholder="Search for a place..."
-          className="bg-surface flex-1 text-white text-xl placeholder:text-gray-400 border-none focus:outline-none"
+          className="bg-surface flex-1 text-white text-xl placeholder:text-gray-400  -none focus:outline-none"
         />
       </div>
       <button className="bg-accent max-md:w-full w-28.5 h-14 text-xl rounded-xl text-white p-2">

@@ -1,4 +1,5 @@
 import "./globals.css";
+import AppContextProvider from "@/context/appContext";
 import { Bricolage_Grotesque } from "next/font/google";
 
 const Bricolage = Bricolage_Grotesque({
@@ -14,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`h-full antialiased ${Bricolage.className}`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <AppContextProvider>
+        <body className="min-h-full flex flex-col">{children}</body>
+      </AppContextProvider>
     </html>
   );
 }
