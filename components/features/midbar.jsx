@@ -2,37 +2,29 @@ import React from "react";
 import { useContext } from "react";
 import { appContext } from "@/context/appContext";
 
-const midbar = () => {
-  const { feelsLike } = useContext(appContext);
-  const { humidity } = useContext(appContext);
-  const { windSpeed } = useContext(appContext);
-  const { precipitation } = useContext(appContext);
- 
+const Midbar = () => {
+  const { data } = useContext(appContext);
 
-    return (
-    <div className="flex w-full justify-between rounded-xl p-4   gap-3 col-start-1 col-end-3 row-start-3 row-end-4 mt-0">
-      <div className="w-1/2 h-full p-4 bg-surface flex flex-col rounded-xl">
-        
+  return (
+    <div className="flex w-full max-md:flex-wrap justify-between rounded-xl p-4   gap-3 col-start-1 col-end-3 row-start-3 row-end-4 mt-0">
+      <div className="flex-1 min-w-35 h-29.5 justify-around p-4 bg-surface flex flex-col rounded-xl">
         <p className="text-xs ">Feels like </p>
-        <span className="text-2xl">{feelsLike}° </span>
+        <span className="text-2xl">{data && data.current.feelslike_c}° </span>
       </div>
-      <div className="w-1/2 h-full p-4 bg-surface flex flex-col rounded-xl">
-        
+      <div className="flex-1 min-w-35h-29.5 justify-around p-4 bg-surface flex flex-col rounded-xl">
         <p className="text-xs ">Humidity </p>
-        <span className="text-2xl">{humidity}% </span>
+        <span className="text-2xl">{data && data.current.humidity}% </span>
       </div>
-      <div className="w-1/2 h-full p-4 bg-surface flex flex-col rounded-xl">
-        
+      <div className="flex-1 min-w-35h-29.5 justify-around p-4 bg-surface flex flex-col rounded-xl">
         <p className="text-xs ">Wind </p>
-        <span className="text-2xl">{windSpeed}km/h </span>
+        <span className="text-2xl">{data && data.current.wind_kph}km/h </span>
       </div>
-      <div className="w-1/2 h-full p-4 bg-surface flex flex-col rounded-xl">
-        
+      <div className="flex-1 min-w-35h-29.5 justify-around p-4 bg-surface flex flex-col rounded-xl">
         <p className="text-xs ">Precipitation </p>
-        <span className="text-2xl">{precipitation} mm </span>
+        <span className="text-2xl">{data && data.current.precip_mm} mm </span>
       </div>
     </div>
   );
 };
 
-export default midbar;
+export default Midbar;
