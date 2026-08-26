@@ -6,7 +6,7 @@ const Midbar = () => {
   const { data } = useContext(appContext);
 
   return (
-    <div className="flex w-full max-md:flex-wrap justify-between rounded-xl p-4   gap-3 col-start-1 col-end-3 row-start-3 row-end-4 mt-0">
+    <div className="flex w-full max-md:flex-wrap justify-between rounded-xl p-4   gap-3 col-start-1 col-end-3 row-start-3 row-end-4">
       <div className="flex-1 min-w-35 h-29.5 justify-around p-4 bg-surface flex flex-col rounded-xl">
         <p className="text-xs ">Feels like </p>
         <span className="text-2xl">{data && data.current.feelslike_c}° </span>
