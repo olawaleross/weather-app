@@ -4,7 +4,7 @@ import { appContext } from "@/context/appContext";
 import Dropdown from "../ui/dropdown";
 
 const SideBar = () => {
-  const { data } = useContext(appContext);
+  const { data,unit } = useContext(appContext);
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const SideBar = () => {
   return (
     <div className="rounded-xl max-lg:h-160 h-180 w-full flex flex-col p-4 col-start-3 col-end-4 row-span-3 bg-surface">
       <div className="flex justify-between items-center">
-        <p>Hourly Forecast</p>
+        <p className="text-xl font-semibold">Hourly Forecast</p>
         <Dropdown
           options={covers}
           type={"date"}
@@ -76,7 +76,7 @@ const SideBar = () => {
                     })}
                   </p>
 
-                  <p>{hour.temp_c}°</p>
+                  <p>{unit.temp ==="metric" ? hour.temp_c : hour.temp_f}°</p>
                 </div>
               );
             })}

@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export default async function getForecast() {
+export default async function getForecast(query) {
   const base = process.env.BASE_URL;
   const key = process.env.API_KEY;
 
-  const url = `${base}/forecast.json?key=${key}&q=lagos&days=3`;
+  const url = `${base}/forecast.json?key=${key}&q=${query}&days=3`;
 
   const response = await axios.get(url);
 

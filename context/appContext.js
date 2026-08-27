@@ -2,17 +2,23 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
- export const appContext = createContext({});
+export const appContext = createContext({});
 
 const AppContextProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
   const [data, setData] = useState(null);
-
+  const [unit, setUnit] = useState({
+    global: "metric",
+    speed: "metric",
+    temp: "metric",
+    precipitation: "metric",
+  });
 
   useEffect(() => {
     if (!navigator) return;
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
+
       setLocation(`${latitude} ${longitude}`);
     });
   }, []);
@@ -21,13 +27,13 @@ const AppContextProvider = ({ children }) => {
     if (!location) return;
 
     async function load() {
-      const forecastRes = await axios.get("/api/forecast");
+      const forecastRes = await axios.get(`/api/forecast?q=${location}`);
       setData(forecastRes.data);
     }
     load();
   }, [location]);
 
-  const values = {data};
+  const values = { data, unit, setUnit,setLocation };
   return <appContext.Provider value={values}>{children}</appContext.Provider>;
 };
 

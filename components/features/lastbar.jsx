@@ -3,13 +3,14 @@ import { useContext } from "react";
 import { appContext } from "@/context/appContext";
 
 const Lastbar = () => {
-  const { data } = useContext(appContext);
+  const { data,unit } = useContext(appContext);
+
 
   const forecast = data ? data.forecast.forecastday : null;
 
   return (
     <div className=" p-4  h-full w-full rounded-xl col-start-1 col-end-3 row-start-3 row-end-4 ">
-      <p className="text-xs">Daily Forecast</p>
+      <p className="text-xl font-semibold">Daily Forecast</p>
       {forecast ? (
         <div className="flex mt-2 flex-wrap gap-4">
           {forecast &&
@@ -28,8 +29,8 @@ const Lastbar = () => {
                   <img src={day.day.condition.icon} alt="" />
 
                   <div className="flex justify-between w-full">
-                    <p>{day.day.maxtemp_c}°</p>
-                    <p>{day.day.mintemp_c}°</p>
+                    <p>{ unit.temp === "metric" ? day.day.maxtemp_c :day.day.maxtemp_f}°</p>
+                    <p>{ unit.temp === "metric" ? day.day.mintemp_c :day.day.mintemp_f}°</p>
                   </div>
                 </div>
               );
