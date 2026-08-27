@@ -60,7 +60,6 @@ const TopBar = () => {
       </div>
     );
   }
-  console.log(data)
 
   return (
     <div className="w-full flex items-center justify-between p-4 col-start-1 col-end-3 max-lg:h-71 row-span-1  bg-[url(/bg-today-large.svg)] max-md:bg-[url(/bg-today-small.svg)] lg:bg-cover bg-no-repeat bg-center bg-cover rounded-xl">

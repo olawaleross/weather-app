@@ -9,9 +9,7 @@ const header = () => {
         <img src="/logo.svg" alt="logo" className="w-55" />
         <Dropdown />
       </div>
-      <h1 className="text-[52px] text-center m-auto max-md:w-86 max-md:leading-18 max-lg:w-120 max-lg:leading-20 leading-30 font-bold flex flex-1 justify-center align-middle w-full my-4">
-        How&apos;s the sky looking today?
-      </h1>
+     
     </div>
   );
 };

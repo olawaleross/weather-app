@@ -13,6 +13,7 @@ const AppContextProvider = ({ children }) => {
     temp: "metric",
     precipitation: "metric",
   });
+  const [error, setError] = useState(true);
 
   useEffect(() => {
     if (!navigator) return;
@@ -27,13 +28,18 @@ const AppContextProvider = ({ children }) => {
     if (!location) return;
 
     async function load() {
-      const forecastRes = await axios.get(`/api/forecast?q=${location}`);
-      setData(forecastRes.data);
+      try {
+        const forecastRes = await axios.get(`/api/forecast?q=${location}`);
+        setData(forecastRes.data);
+        setError(false)
+      } catch (error) {
+        setError(true);
+      }
     }
     load();
   }, [location]);
 
-  const values = { data, unit, setUnit,setLocation };
+  const values = { data, unit, setUnit, setLocation,error };
   return <appContext.Provider value={values}>{children}</appContext.Provider>;
 };
 
